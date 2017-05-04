@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Volvox", "PCloud\Volvox.vbproj", "{269D4DDC-1C63-4EBC-ABBD-B47064B28282}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AC932F24-906E-48FA-8AD6-027DD48C96F2} = {AC932F24-906E-48FA-8AD6-027DD48C96F2}
+		{9206BD2F-62F2-4A7B-9252-002A67C8A7A4} = {9206BD2F-62F2-4A7B-9252-002A67C8A7A4}
+		{918D8338-71AC-4D03-9214-1137138BE9AC} = {918D8338-71AC-4D03-9214-1137138BE9AC}
+		{A9D77871-B936-4589-B7B6-1CC96B103D23} = {A9D77871-B936-4589-B7B6-1CC96B103D23}
+		{6EDD7094-1B77-46B1-A978-1D9B50141ED6} = {6EDD7094-1B77-46B1-A978-1D9B50141ED6}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Volvox_Cloud", "..\Volvox_Cloud\Volvox_Cloud.vbproj", "{A9D77871-B936-4589-B7B6-1CC96B103D23}"
 EndProject
@@ -48,29 +55,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://mateuszzwierzycki.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = PCloud\\Volvox.vbproj
-		SccProjectName1 = PCloud
-		SccLocalPath1 = PCloud
-		SccProjectUniqueName2 = ..\\Volvox_Cloud\\Volvox_Cloud.vbproj
-		SccProjectName2 = ../Volvox_Cloud
-		SccLocalPath2 = ..\\Volvox_Cloud
-		SccProjectUniqueName3 = ..\\Volvox_Instr\\Volvox_Instr.vbproj
-		SccProjectName3 = ../Volvox_Instr
-		SccLocalPath3 = ..\\Volvox_Instr
-		SccProjectUniqueName4 = ..\\e57Lib\\E57Lib\\E57LibReader.vbproj
-		SccProjectName4 = ../e57Lib/E57Lib
-		SccLocalPath4 = ..\\e57Lib\\E57Lib
-		SccProjectUniqueName5 = ..\\e57Lib\\E57LibWriter\\E57LibWriter.vbproj
-		SccProjectName5 = ../e57Lib/E57LibWriter
-		SccLocalPath5 = ..\\e57Lib\\E57LibWriter
-		SccProjectUniqueName6 = ..\\e57Lib\\E57LibCommon\\E57LibCommon.vbproj
-		SccProjectName6 = ../e57Lib/E57LibCommon
-		SccLocalPath6 = ..\\e57Lib\\E57LibCommon
 	EndGlobalSection
 EndGlobal
