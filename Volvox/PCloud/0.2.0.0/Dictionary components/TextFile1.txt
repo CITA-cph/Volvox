@@ -1,0 +1,147 @@
+﻿Imports System.Drawing
+Imports Grasshopper.Kernel
+Imports Rhino.Geometry
+
+Public Class Dict_ColorDictionary
+    Inherits GH_Component
+
+    Sub New()
+        MyBase.New("Preview Data", "PrevData", "Assign colors to cloud according to user data.", "Volvox", "UserData")
+    End Sub
+
+    Public Overrides ReadOnly Property ComponentGuid As Guid
+        Get
+            Return New Guid("5c4c0d91-6ca2-42d9-9726-be558f6642a1")
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property Exposure As GH_Exposure
+        Get
+            Return GH_Exposure.secondary
+        End Get
+    End Property
+
+    Protected Overrides Sub RegisterInputParams(pManager As GH_InputParamManager)
+        pManager.AddParameter(New Param_Cloud, "Cloud", "C", "Cloud to manipulate", GH_ParamAccess.item)
+        pManager.AddTextParameter("Key", "K", "Key", GH_ParamAccess.item)
+        pManager.AddNumberParameter("Values", "V", "Values", GH_ParamAccess.list)
+        pManager.AddColourParameter("Colors", "C", "Colors", GH_ParamAccess.list)
+    End Sub
+
+    Protected Overrides Sub RegisterOutputParams(pManager As GH_OutputParamManager)
+        pManager.AddParameter(New Param_Cloud, "Cloud", "C", "Modified cloud", GH_ParamAccess.item)
+    End Sub
+
+    Dim GlobalCloud As PointCloud = Nothing
+    Dim ProcCount As Integer = Environment.ProcessorCount
+    Dim DictVal() As Double = Nothing
+    Dim ColVal() As Color = Nothing
+    Dim Itv As Interval = Nothing
+
+    Protected Overrides Sub SolveInstance(DA As IGH_DataAccess)
+
+        Dim pars As New List(Of Double)
+        Dim cols As New List(Of Color)
+
+        Dim strdc As String = Nothing
+        Dim pc As PointCloud = Nothing
+
+        If Not DA.GetData(0, pc) Then Return
+        If Not DA.GetData(1, strdc) Then Return
+        If Not DA.GetDataList(2, pars) Then Return
+        If Not DA.GetDataList(3, cols) Then Return
+
+        GlobalCloud = pc
+        Dim bmp As New Bitmap(1000, 1)
+        Dim rect As Rectangle = New Rectangle(0, 0, bmp.Width, bmp.Height)
+
+        Dim cb As New System.Drawing.Drawing2D.ColorBlend()
+        Dim pos(cols.Count - 1) As Single
+
+        For i As Integer = 0 To pos.Count - 1 Step 1
+            pos(i) = pars(i)
+        Next
+
+        Dim colors() As Color = cols.ToArray
+        Array.Sort(pos, colors)
+        Array.Sort(pos, pos)
+        Dim normpos(cols.Count - 1) As Single
+        Itv = New Interval(pos(0), pos(pos.Length - 1))
+
+        For i As Integer = 0 To normpos.Length - 1 Step 1
+            normpos(i) = itv.NormalizedParameterAt(pos(i))
+        Next
+
+        cb.Positions = normpos
+        cb.Colors = colors
+        Dim lin As New System.Drawing.Drawing2D.LinearGradientBrush(rect, Color.Black, Color.Black, 0, False)
+        lin.InterpolationColors = cb
+
+        ColVal = Nothing
+        ReDim ColVal(bmp.Width - 1)
+        Dim counter As Integer
+
+        Using g As Graphics = Graphics.FromImage(bmp)
+            g.FillRectangle(lin, rect)
+            For i As Integer = 0 To bmp.Width - 1 Step 1
+                ColVal(counter) = bmp.GetPixel(i, 0)
+                counter += 1
+            Next
+        End Using
+
+        DictVal = Nothing
+        DictVal = pc.UserDictionary(strdc)
+
+        Dim ThreadList As New List(Of Threading.Thread)
+
+        For i As Integer = 0 To ProcCount - 1 Step 1
+            Dim nt As New Threading.Thread(AddressOf AssignColors)
+            nt.IsBackground = True
+            ThreadList.Add(nt)
+        Next
+
+        For i As Integer = 0 To ProcCount - 1 Step 1
+            ThreadList(i).Start(i)
+        Next
+
+        For Each t As Threading.Thread In ThreadList
+            t.Join()
+        Next
+
+        DA.SetData(0, pc)
+        GlobalCloud = Nothing
+        DictVal = Nothing
+        ColVal = Nothing
+        bmp.Dispose()
+        ThreadList.Clear()
+        Itv = Nothing
+
+    End Sub
+
+    Sub AssignColors(MyIndex As Integer)
+
+        Dim idx As Integer = ColVal.Length - 1
+
+        Dim i0 As Integer = MyIndex * Math.Ceiling(GlobalCloud.Count / ProcCount)
+        Dim i1 As Integer = Math.Min((MyIndex + 1) * Math.Ceiling(GlobalCloud.Count / ProcCount) - 1, GlobalCloud.Count - 1)
+
+        Dim totc As Integer = GlobalCloud.Count
+
+        For i As Integer = i0 To i1 Step 1
+            Dim thisnorm As Double = itv.NormalizedParameterAt(DictVal(i))
+
+            Select Case thisnorm
+                Case < (0 - Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance)
+                    GlobalCloud(i).Color = Color.Black
+                Case > (1 + Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance)
+                    GlobalCloud(i).Color = Color.White
+                Case Else
+                    GlobalCloud(i).Color = ColVal(thisnorm * idx)
+            End Select
+
+        Next
+
+
+    End Sub
+
+End Class

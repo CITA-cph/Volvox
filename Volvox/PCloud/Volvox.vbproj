@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\Rhino.exe</StartProgram>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{269D4DDC-1C63-4EBC-ABBD-B47064B28282}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Volvox</RootNamespace>
+    <AssemblyName>Volvox</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\..\AllBuild\</OutputPath>
+    <DocumentationFile>Volvox.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\AllBuild\</OutputPath>
+    <DocumentationFile>Volvox.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crc32C.NET">
+      <HintPath>..\..\e57Lib\packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="E57LibCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\E57Lib\E57LibCommon\bin\Release\E57LibCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="E57LibReader, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\E57Lib\E57Lib\bin\Release\E57LibReader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="E57LibWriter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\E57Lib\E57LibWriter\bin\Release\E57LibWriter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GH_IO">
+      <HintPath>..\..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <HintPath>..\..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IronPython, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.Modules.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.SQLite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.Wpf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Dynamic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.AspNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.AspNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.Metadata.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RhinoCommon">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhinoceros 5 (64-bit)\System\RhinoCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Volvox_Cloud">
+      <HintPath>..\..\Volvox_Cloud\obj\Debug\Volvox_Cloud.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Volvox_Instr">
+      <HintPath>..\..\Volvox_Instr\obj\Debug\Volvox_Instr.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="0.1.0.0\Util_DisjointClusters_OBSOLETE.vb" />
+    <Compile Include="0.1.0.0\Util_MeshCompare_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_BoxCrop.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_PlaneClip.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_RandomSub.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_SphereCrop.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_Transform.vb" />
+    <Compile Include="0.1.1.0\Engine components\Eng_VoxelSub.vb" />
+    <Compile Include="0.1.1.0\Instructions\Instr_Transform.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_Command_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_E57Command_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_E57RandomSub_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_E57SpatialSub_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_open_OBSOLETE.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_Command.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_E57Command.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_E57RandomSub.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_E57SpatialSub.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_Open.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_toXYZ.vb" />
+    <Compile Include="0.2.0.0\CloudCompare\CC_XYZCommand.vb" />
+    <Compile Include="0.2.0.0\Engine components\Eng_LoadE57_OBSOLETE.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_LoadE57.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_XYZPreview.vb" />
+    <Compile Include="0.3.0.0\Dictionary components\Dict_ExpressionDictionaryEx.vb" />
+    <Compile Include="0.3.0.0\Dictionary components\Dict_GetValue.vb" />
+    <Compile Include="0.3.0.0\E57 Components\E57_Metadata.vb" />
+    <Compile Include="0.3.0.0\E57 Components\Util_SaveE57.vb" />
+    <Compile Include="0.3.0.0\E57 Components\Util_SimpleSaveE57.vb" />
+    <Compile Include="0.3.0.0\Engine components\Eng_LoadE57.vb" />
+    <Compile Include="0.3.0.0\Engine components\Eng_SaveXYZ.vb" />
+    <Compile Include="0.3.0.0\Engine components\Eng_SaveE57.vb" />
+    <Compile Include="0.3.0.0\Instructions\Instr_SaveE57.vb" />
+    <Compile Include="0.3.0.0\Instructions\Instr_SaveXYZ.vb" />
+    <Compile Include="0.3.0.0\Parameters\Param_SaveFile.vb" />
+    <Compile Include="0.3.0.0\Parameters\Param_SaveE57.vb" />
+    <Compile Include="0.3.0.0\Types\GH_SaveFileGoo.vb" />
+    <Compile Include="0.3.0.0\Utility components\Util_SetScannerPosition.vb" />
+    <Compile Include="0.3.0.0\Utility components\Util_GetScannerPosition.vb" />
+    <Compile Include="Utils\E57_CloudConstructorEx.vb" />
+    <Compile Include="Utils\E57_CloudExporter.vb" />
+    <Compile Include="Utils\E57_ConstructorMessageEventArgs.vb" />
+    <Compile Include="Utils\Math_EvalFunction.vb" />
+    <Compile Include="Utils\Utils_PythonLoad.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_toXYZ_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\CloudCompare\CC_XYZCommand_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_MeshCompare_OBSOLETE2.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_VoxelColor.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_CullCloud.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_RemoveDictionary.vb" />
+    <Compile Include="Utils\E57_CloudConstructor.vb" />
+    <Compile Include="0.2.0.0\Diff\HitCountDeduction.vb" />
+    <Compile Include="0.2.0.0\Diff\LocalContext.vb" />
+    <Compile Include="0.2.0.0\E57 components\E57_Load.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_ClippingPlane.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_RemoveColors.vb" />
+    <Compile Include="0.2.0.0\Diff\CSV Export.vb" />
+    <Compile Include="0.2.0.0\Diff\GUIDMatch.vb" />
+    <Compile Include="0.2.0.0\Diff\RandomMeasure.vb" />
+    <Compile Include="0.2.0.0\Diff\RdfGUIDs.vb" />
+    <Compile Include="0.2.0.0\Diff\SelectWithKey.vb" />
+    <Compile Include="0.2.0.0\Diff\Stats.vb" />
+    <Compile Include="0.2.0.0\Diff\Histogram.vb" />
+    <Compile Include="0.2.0.0\Diff\ProjectFolder.vb" />
+    <Compile Include="0.2.0.0\Diff\EfficientRdfAssoc.vb" />
+    <Compile Include="0.2.0.0\Diff\RdfTransformation.vb" />
+    <Compile Include="0.2.0.0\Diff\Screenshot.vb" />
+    <Compile Include="0.2.0.0\E57 components\E57_Metadata_OBSOLETE.vb" />
+    <Compile Include="0.2.0.0\E57 components\E57_LoadEx.vb" />
+    <Compile Include="0.2.0.0\Engine components\Eng_LoadCloud.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_BoxCrop.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_LoadMulti.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_PlaneClip.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_RandomSub.vb" />
+    <Compile Include="0.2.0.0\Engine\Cloud_EngineX.vb" />
+    <Compile Include="0.2.0.0\Engine\Cloud_EngineAttX.vb" />
+    <Compile Include="0.1.1.0\Engine\Cloud_EngineAtt.vb" />
+    <Compile Include="0.1.1.0\Parameters\Param_Cloud.vb" />
+    <Compile Include="0.1.1.0\Parameters\Param_Instr.vb" />
+    <Compile Include="0.1.1.0\Utility components\Att_Description.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_Description.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_Average_OBSOLETE.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_ClosestPoint.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_ColoredDelaunay.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_GetPoints.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_LoadFile.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_Merge.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_Create.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_Deconstruct.vb" />
+    <Compile Include="0.1.1.0\Engine\Cloud_Engine.vb" />
+    <Compile Include="0.1.1.0\Utility components\Util_SaveFile_OBSOLETE.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_SphereCrop.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_Bounds.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_ColorDictionary.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_AddDictionary.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_ExpressionDictionary.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_GetDictionary.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_ListDictionaries.vb" />
+    <Compile Include="0.2.0.0\Instructions\Instr_VoxelSub.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_3dGrid.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_Average.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_DisjointClusters.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_GetRange.vb" />
+    <Compile Include="0.2.0.0\Dictionary components\Dict_MeshCompare.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_MeshInclusion.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_SaveFile.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_Selection.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_SelectionAtt.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_Statistics.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_MultiMerge.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_LoadXYZEx.vb" />
+    <Compile Include="0.2.0.0\Utility components\Util_PlaneSec.vb" />
+    <Compile Include="GUIDs\GUID_Space.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="Utils\Asmbl_Description.vb" />
+    <Compile Include="Utils\Utils_IO.vb" />
+    <Compile Include="Utils\PointCloud_Tools.vb" />
+    <Compile Include="Utils\Threading_Load.vb" />
+    <Compile Include="Utils\Control_Display.Designer.vb">
+      <DependentUpon>Control_Display.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Control_Display.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\Math_EvalProvider.vb" />
+    <Compile Include="Utils\Multipoint.vb" />
+    <Compile Include="Utils\Parse_Load.vb" />
+    <Compile Include="Utils\Parse_MultiLoad.vb" />
+    <Compile Include="Utils\Parse_Save.vb" />
+    <Compile Include="Utils\MySettings.vb" />
+    <Compile Include="Utils\Math_Utils.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Control_Display.resx">
+      <DependentUpon>Control_Display.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Icon_CloudParam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Engine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Instruction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Deconstruct.png" />
+    <None Include="Resources\Icon_Construct.png" />
+    <None Include="Resources\Icon_ClosestPoint.png" />
+    <None Include="Resources\Icon_Section.png" />
+    <None Include="Resources\Icon_GetPoint.png" />
+    <None Include="Resources\Icon_Merge.png" />
+    <None Include="Resources\Icon_Average.png" />
+    <None Include="Resources\Icon_Compare.png" />
+    <None Include="Resources\Icon_Delaunay.png" />
+    <None Include="Resources\Icon_Disjoint.png" />
+    <None Include="Resources\Icon_Load.png" />
+    <None Include="Resources\Icon_Save.png" />
+    <None Include="Resources\Icon_Transform.png" />
+    <None Include="Resources\Icon_RandomSub.png" />
+    <None Include="Resources\Icon_VoxelSub.png" />
+    <None Include="Resources\Icon_PlaneClip.png" />
+    <None Include="Resources\Icon_BoxCrop.png" />
+    <None Include="Resources\Icon_SphereCrop.png" />
+    <None Include="Resources\Icon_SpatialCC.png" />
+    <None Include="Resources\Icon_RandomCC.png" />
+    <None Include="Resources\Icon_Command.png" />
+    <None Include="Resources\Icon_CommandE57.png" />
+    <None Include="Resources\Icon_CommandXYZ.png" />
+    <None Include="Resources\Icon_OpenCC.png" />
+    <None Include="Resources\Icon_Convert.png" />
+    <None Include="Resources\Icon_VoxelColored.png" />
+    <None Include="Resources\DURAARK logo.jpg" />
+    <None Include="Resources\Icon_Volvox.png" />
+    <None Include="Resources\DURAARK logo2.jpg" />
+    <None Include="Resources\Volvox.png" />
+    <None Include="GUIDs\Spare GUIDS.txt" />
+    <None Include="Resources\Icon_Grid.png" />
+    <None Include="Resources\Icon_MMerge.png" />
+    <None Include="Resources\Icon_EngineX.png" />
+    <None Include="Resources\Icon_AddData.png" />
+    <None Include="Resources\Icon_RemoveData.png" />
+    <None Include="Resources\Icon_ListKeys.png" />
+    <None Include="Resources\Icon_GetData.png" />
+    <None Include="Resources\Icon_Bounds.png" />
+    <None Include="Resources\Icon_CullCloud.png" />
+    <None Include="Resources\Icon_PreviewData.png" />
+    <None Include="Resources\Icon_CloudExpression.png" />
+    <None Include="Resources\Icon_LoadEngine.png" />
+    <None Include="Resources\Icon_Stats.png" />
+    <None Include="Resources\Icon_SubCloud.png" />
+    <None Include="Resources\Icon_CleanCloud.png" />
+    <None Include="Resources\Icon_LoadE57.png" />
+    <None Include="Resources\Icon_LoadE57EX.png" />
+    <None Include="Resources\Icon_LoadEX.png" />
+    <None Include="Resources\Icon_LoadEngineE57.png" />
+    <None Include="Resources\Icon_ClippingPlane.png" />
+    <None Include="Resources\Icon_Selection.png" />
+    <None Include="Resources\Icon_MeshCull.png" />
+    <None Include="Resources\Icon_Preview100.png" />
+    <None Include="Resources\Icon_E57Metadata.png" />
+    <None Include="Resources\Icon_GetDataItem.png" />
+    <None Include="Resources\Icon_GetPosition.png" />
+    <None Include="Resources\Icon_SaveE57.png" />
+    <None Include="Resources\Icon_SaveE57Engine.png" />
+    <None Include="Resources\Icon_SaveE57Ex.png" />
+    <None Include="Resources\Icon_SaveXYZEngine.png" />
+    <None Include="Resources\Icon_ScriptCloud.png" />
+    <None Include="Resources\Icon_SetPosition.png" />
+    <None Include="Resources\Icon_ParamE57.png" />
+    <None Include="Resources\Icon_ParamXYZ.png" />
+    <Content Include="_README\_BUGS.txt" />
+    <Content Include="_README\_README.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)\$(ProjectName).gha"
+                  Erase "$(TargetPath)"
+  </PostBuildEvent>
+  </PropertyGroup>
+</Project>

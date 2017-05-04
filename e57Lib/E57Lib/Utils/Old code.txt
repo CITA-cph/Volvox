@@ -1,0 +1,984 @@
+﻿
+
+    'Public Structure PointRecord
+
+    '    Private cartX As Double
+    '    Private cartY As Double
+    '    Private cartZ As Double
+    '    Private spherRange As Double
+    '    Private spherAzim As Double
+    '    Private spherElev As Double
+    '    Private rowId As Integer
+    '    Private colId As Integer
+    '    Private retCount As Integer
+    '    Private retId As Integer
+    '    Private timeSt As Double
+    '    Private intens As Double
+    '    Private Rval As Double
+    '    Private Gval As Double
+    '    Private Bval As Double
+    '    Private cartInv As Integer
+    '    Private spherInv As Integer
+    '    Private isTimeInv As Integer
+    '    Private isIntensInv As Integer
+    '    Private isColorInv As Integer
+
+    '    Sub New(NothingGoesHere As Boolean)
+
+    '    End Sub
+
+    '    Public ReadOnly Property CartesianX As Double
+    '        Get
+    '            Return cartX
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property CartesianY As Double
+    '        Get
+    '            Return cartY
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property CartesianZ As Double
+    '        Get
+    '            Return cartZ
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property SphericalRange As Double
+    '        Get
+    '            Return spherRange
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property SphericalAzimuth As Double
+    '        Get
+    '            Return spherAzim
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property SphericalElevation As Double
+    '        Get
+    '            Return spherElev
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property RowIndex As Integer
+    '        Get
+    '            Return rowId
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColumnIndex As Integer
+    '        Get
+    '            Return colId
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ReturnCount As Integer
+    '        Get
+    '            Return retCount
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ReturnIndex As Integer
+    '        Get
+    '            Return retId
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property TimeStamp As Double
+    '        Get
+    '            Return timeSt
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property Intensity As Double
+    '        Get
+    '            Return intens
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColorRed As Double
+    '        Get
+    '            Return Rval
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColorGreen As Double
+    '        Get
+    '            Return Gval
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColorBlue As Double
+    '        Get
+    '            Return Bval
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property CartesianInvalidState As Integer
+    '        Get
+    '            Return cartInv
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property SphericalInvalidState As Integer
+    '        Get
+    '            Return spherInv
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property IsTimeStampInvalid As Integer
+    '        Get
+    '            Return isTimeInv
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property IsIntensityInvalid As Integer
+    '        Get
+    '            Return isIntensInv
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property IsColorInvalid As Integer
+    '        Get
+    '            Return isColorInv
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure PointGroupingSchemes
+    '    Private group As GroupingByLine
+
+    '    Sub New(Grouping As GroupingByLine)
+    '        group = Grouping
+    '    End Sub
+
+    '    Public ReadOnly Property GroupingByLine
+    '        Get
+    '            Return group
+    '        End Get
+    '    End Property
+
+
+    'End Structure
+
+    'Public Structure GroupingByLine
+    '    Private idName As String
+    '    Private gro As List(Of LineGroupRecord)
+
+    '    Sub New(Name As String, LineGroupRecords As List(Of LineGroupRecord))
+    '        idName = Name
+    '        gro.AddRange(LineGroupRecords)
+    '    End Sub
+
+    '    Public ReadOnly Property IdElementName As String
+    '        Get
+    '            Return idName
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property Groups As List(Of LineGroupRecord)
+    '        Get
+    '            Return gro
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure LineGroupRecord
+
+    '    Private idValue As Integer
+    '    Private StartPtID As Integer
+    '    Private ptCount As Integer
+
+    '    Private cartB As CartesianBounds
+    '    Private sphB As SphericalBounds
+
+    '    Sub New(IDElementValue As Integer, StartPtIndex As Integer, Count As Integer, CartesianB As CartesianBounds, SphericalB As SphericalBounds)
+
+    '        idValue = IDElementValue
+    '        StartPtID = StartPtIndex
+    '        ptCount = Count
+    '        cartB = CartesianB
+    '        sphB = SphericalB
+    '    End Sub
+
+    '    Public ReadOnly Property idElementValue As Integer
+    '        Get
+    '            Return idValue
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property StartPointIndex As Integer
+    '        Get
+    '            Return StartPtID
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property PointCount As Integer
+    '        Get
+    '            Return ptCount
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property BoundsCartesian As CartesianBounds
+    '        Get
+    '            Return cartB
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property BoundsSpherical As SphericalBounds
+    '        Get
+    '            Return sphB
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure CartesianBounds
+    '    Private xmin As Double
+    '    Private ymin As Double
+    '    Private zmin As Double
+    '    Private xmax As Double
+    '    Private ymax As Double
+    '    Private zmax As Double
+
+    '    Sub New(xn As XmlNode)
+
+    '        Dim fp As New FloatParser
+
+    '        For Each c As XmlNode In xn.ChildNodes
+    '            fp.SetNode(c)
+    '            Select Case c.Name
+    '                Case "xMinimum"
+    '                    xmin = fp.value
+    '                Case "xMaximum"
+    '                    xmax = fp.value
+    '                Case "yMinimum"
+    '                    ymin = fp.value
+    '                Case "yMaximum"
+    '                    ymax = fp.value
+    '                Case "zMinimum"
+    '                    zmin = fp.value
+    '                Case "zMaximum"
+    '                    zmax = fp.value
+    '            End Select
+    '        Next
+
+    '    End Sub
+
+    '    Sub New(minX As Double, minY As Double, minZ As Double, maxX As Double, maxY As Double, maxZ As Double)
+    '        xmin = minX
+    '        ymin = minY
+    '        zmin = minZ
+    '        xmax = maxX
+    '        ymax = maxY
+    '        zmax = maxZ
+    '    End Sub
+
+    '    Public ReadOnly Property XMinimum As Double
+    '        Get
+    '            Return xmin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property YMinimum As Double
+    '        Get
+    '            Return ymin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ZMinimum As Double
+    '        Get
+    '            Return zmin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property XMaximum As Double
+    '        Get
+    '            Return xmax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property YMaximum As Double
+    '        Get
+    '            Return ymax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ZMaximum As Double
+    '        Get
+    '            Return zmax
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure SphericalBounds
+    '    Private rangeMin As Double
+    '    Private rangeMax As Double
+    '    Private elevationMin As Double
+    '    Private elevationMax As Double
+    '    Private azStart As Double
+    '    Private azEnd As Double
+
+    '    Sub New(MinRange As Double, MaxRange As Double, MinElevation As Double, MaxElevation As Double, StartAzimuth As Double, EndAzimuth As Double)
+
+    '        rangeMin = MinRange
+    '        rangeMax = MaxRange
+    '        elevationMax = MaxElevation
+    '        elevationMin = MinElevation
+    '        azStart = StartAzimuth
+    '        azEnd = EndAzimuth
+
+    '    End Sub
+
+    '    Public ReadOnly Property RangeMinimum As Double
+    '        Get
+    '            Return rangeMin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property RangeMaximum As Double
+    '        Get
+    '            Return rangeMax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ElevationMinimum As Double
+    '        Get
+    '            Return elevationMin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ElevationMaximum As Double
+    '        Get
+    '            Return elevationMax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property AzimuthStart As Double
+    '        Get
+    '            Return azStart
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property AzimuthEnd As Double
+    '        Get
+    '            Return azEnd
+    '        End Get
+    '    End Property
+    'End Structure
+
+    'Public Structure RigidBodyTransform
+    '    Private Rot As Quaternion
+    '    Private Trans As Point
+
+    '    Sub New(RotationQuaternion As Quaternion, TranslationPoint As Point)
+    '        Rot = RotationQuaternion
+    '        Trans = TranslationPoint
+    '    End Sub
+
+    '    Public ReadOnly Property Rotation As Quaternion
+    '        Get
+    '            Return Rot
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property Translation As Point
+    '        Get
+    '            Return Trans
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure Quaternion
+    '    Public w As Double
+    '    Public x As Double
+    '    Public y As Double
+    '    Public z As Double
+    'End Structure
+
+    'Public Structure Point
+    '    Public x As Double
+    '    Public y As Double
+    '    Public z As Double
+    'End Structure
+
+    'Public Structure IndexBounds
+
+    '    Private rowMin As Integer
+    '    Private rowMax As Integer
+    '    Private colMin As Integer
+    '    Private colMax As Integer
+    '    Private retMin As Integer
+    '    Private retMax As Integer
+
+
+    '    Sub New(MinRow As Integer, MaxRow As Integer, MinColumn As Integer, MaxColumn As Integer, MinReturn As Integer, MaxReturn As Integer)
+
+    '        rowMin = MinRow
+    '        rowMax = MaxRow
+    '        colMin = MinColumn
+    '        colMax = MaxColumn
+    '        retMin = MinReturn
+    '        retMax = MaxReturn
+
+    '    End Sub
+
+    '    Public ReadOnly Property RowMinimum As Integer
+    '        Get
+    '            Return rowMin
+    '        End Get
+    '    End Property
+
+
+    '    Public ReadOnly Property RowMaximum As Integer
+    '        Get
+    '            Return rowMax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColumnMinimum As Integer
+    '        Get
+    '            Return colMin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ColumnMaximum As Integer
+    '        Get
+    '            Return colMax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ReturnMinimum As Integer
+    '        Get
+    '            Return retMin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property ReturnMaximum As Integer
+    '        Get
+    '            Return retMax
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure IntensityLimits
+    '    Private min As Double
+    '    Private max As Double
+
+    '    Sub New(xn As XmlNode)
+    '        Dim fp As New FloatParser()
+    '        For Each c As XmlNode In xn.ChildNodes
+    '            fp.SetNode(c)
+    '            Select Case c.Name
+    '                Case "intensityMinimum"
+    '                    min = fp.value
+    '                Case "intensityMaximum"
+    '                    max = fp.value
+    '            End Select
+    '        Next
+    '    End Sub
+
+    '    Sub New(Minimum As Double, Maximum As Double)
+    '        min = Minimum
+    '        max = Maximum
+    '    End Sub
+
+    '    Public ReadOnly Property IntensityMinimum As Double
+    '        Get
+    '            Return min
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property IntensityMaximum As Double
+    '        Get
+    '            Return max
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure ColorLimits
+    '    Private rmin As Double
+    '    Private rmax As Double
+    '    Private gmin As Double
+    '    Private gmax As Double
+    '    Private bmin As Double
+    '    Private bmax As Double
+
+    '    Sub New(xn As XmlNode)
+
+    '        Dim fp As New FloatParser
+
+    '        For Each c As XmlNode In xn.ChildNodes
+    '            fp.SetNode(c)
+    '            Select Case c.Name
+    '                Case "colorRedMinimum"
+    '                    rmin = fp.value
+    '                Case "colorRedMaximum"
+    '                    rmax = fp.value
+    '                Case "colorGreenMinimum"
+    '                    gmin = fp.value
+    '                Case "colorGreenMaximum"
+    '                    gmax = fp.value
+    '                Case "colorBlueMinimum"
+    '                    bmin = fp.value
+    '                Case "colorBlueMaximum"
+    '                    bmax = fp.value
+    '            End Select
+    '        Next
+
+    '    End Sub
+
+
+    '    Sub New(MinR As Double, MaxR As Double, MinG As Double, MaxG As Double, MinB As Double, MaxB As Double)
+    '        rmin = MinR
+    '        rmax = MaxR
+    '        gmin = MinG
+    '        gmax = MaxG
+    '        bmin = MinB
+    '        bmax = MaxB
+    '    End Sub
+
+    '    Public ReadOnly Property RMinimum As Double
+    '        Get
+    '            Return rmin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property RMaximum As Double
+    '        Get
+    '            Return rmax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property GMinimum As Double
+    '        Get
+    '            Return gmin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property GMaximum As Double
+    '        Get
+    '            Return gmax
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property BMinimum As Double
+    '        Get
+    '            Return bmin
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property BMaximum As Double
+    '        Get
+    '            Return bmax
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure DateTime
+
+    '    Private dt As Double
+    '    Private atom As Integer '-1 = none, 0 = false, 1 = true 
+
+    '    ''' <summary>
+    '    ''' 
+    '    ''' </summary>
+    '    ''' <param name="Value"></param>
+    '    ''' <param name="IsAtomicRef">-1 = none, 0 = false, 1 = true</param>
+    '    Sub New(Value As Double, IsAtomicRef As Integer)
+
+    '    End Sub
+
+    '    Public ReadOnly Property DateTimeValue As Double
+    '        Get
+    '            Return dt
+    '        End Get
+    '    End Property
+
+    '    ''' <summary>
+    '    ''' -1 = none, 0 = false, 1 = true
+    '    ''' </summary>
+    '    ''' <returns></returns>
+    '    Public ReadOnly Property IsAtomicClockReferenced As Integer
+    '        Get
+    '            Return atom
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Structure Codec
+
+    '    Private inp As List(Of String)
+    '    Private bitpack As Boolean
+
+    '    Sub New(xn As XmlNode)
+
+    '        bitpack = False
+    '        inp = New List(Of String)
+
+    '        For Each c As XmlNode In xn.ChildNodes
+    '            Select Case c.Name
+    '                Case "inputs"
+    '                    For Each cc As XmlNode In c.ChildNodes
+    '                        inp.Add(cc.InnerText)
+    '                    Next
+    '                Case "bitPackCodec"
+    '                    bitpack = True
+    '            End Select
+    '        Next
+
+    '    End Sub
+
+    '    Public ReadOnly Property Inputs As List(Of String)
+    '        Get
+    '            Return inp
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property BitPackCodec As Boolean
+    '        Get
+    '            Return bitpack
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property HasInputs As Boolean
+    '        Get
+    '            If inp.Count = 0 Then
+    '                Return False
+    '            Else
+    '                Return True
+    '            End If
+    '        End Get
+    '    End Property
+
+    'End Structure
+
+    'Public Class Data3D
+
+    '    Private e57Guid As String = String.Empty
+    '    Private pts As List(Of PointRecord)
+    '    Private pos As RigidBodyTransform
+    '    Private origGuid As List(Of String)
+    '    Private pgroup As PointGroupingSchemes
+    '    Private nam As String = String.Empty
+    '    Private desc As String
+    '    Private cartB As CartesianBounds
+    '    Private sphB As SphericalBounds
+    '    Private idB As IndexBounds
+    '    Private intL As IntensityLimits
+    '    Private colL As ColorLimits
+    '    Private aqS As DateTime
+    '    Private aqE As DateTime
+    '    Private sensV As String
+    '    Private sensM As String
+    '    Private sensSer As String
+    '    Private sensHW As String
+    '    Private sensSW As String
+    '    Private sensFW As String
+    '    Private temp As Double
+    '    Private humid As Double
+    '    Private pres As Double
+
+    '    Sub New(OneXmlNode As XmlNode)
+
+    '        For Each c As XmlNode In OneXmlNode.ChildNodes
+
+    '            Select Case c.Name
+    '                Case "guid"
+    '                    e57Guid = c.InnerText
+    '                Case "name"
+    '                    nam = c.InnerText
+    '                Case "description"
+    '                    desc = c.InnerText
+    '                Case "intensityLimits"
+    '                    intL = New IntensityLimits(c)
+    '                Case "colorLimits"
+    '                    colL = New ColorLimits(c)
+    '                Case "cartesianBounds"
+    '                    cartB = New CartesianBounds(c)
+    '                Case "points"
+
+    '            End Select
+
+    '        Next
+
+
+    '    End Sub
+
+
+    '    Public ReadOnly Property Guid As String
+    '        Get
+    '            Return e57Guid
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property Points As List(Of PointRecord)
+    '        Get
+    '            Return pts
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property Pose As RigidBodyTransform
+    '        Get
+    '            Return pos
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property OriginalGuids As List(Of String)
+    '        Get
+    '            Return origGuid
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property PointGroupingSchemes As PointGroupingSchemes
+    '        Get
+    '            Return pgroup
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property Name As String
+    '        Get
+    '            Return nam
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property Description As String
+    '        Get
+    '            Return desc
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property CartesianBounds As CartesianBounds
+    '        Get
+    '            Return cartB
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SphericalBounds As SphericalBounds
+    '        Get
+    '            Return sphB
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property IndexBounds As IndexBounds
+    '        Get
+    '            Return idB
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property IntensityLimits As IntensityLimits
+    '        Get
+    '            Return intL
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property ColorLimits As ColorLimits
+    '        Get
+    '            Return colL
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property AcquisitionStart As DateTime
+    '        Get
+    '            Return aqS
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property AcquisitionEnd As DateTime
+    '        Get
+    '            Return aqE
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SensorVendor As String
+    '        Get
+    '            Return sensV
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SensorModel As String
+    '        Get
+    '            Return sensM
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SensorSerialNumber As String
+    '        Get
+    '            Return sensSer
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SensorHardwareVersion As String
+    '        Get
+    '            Return sensHW
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SensorSoftwareVersion As String
+    '        Get
+    '            Return sensSW
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property SendorFirmwareVersion As String
+    '        Get
+    '            Return sensFW
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property Temperature As Double
+    '        Get
+    '            Return temp
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property RelativeHumidity As Double
+    '        Get
+    '            Return humid
+    '        End Get
+    '    End Property
+    '    Public ReadOnly Property AtmosphericPressure As Double
+    '        Get
+    '            Return pres
+    '        End Get
+    '    End Property
+
+
+    'End Class
+
+    'Public Structure IntegerParser
+
+    '    Private myNode As XmlNode
+
+    '    Sub New(xmln As XmlNode)
+    '        myNode = xmln
+    '    End Sub
+
+    '    Sub SetNode(xmln As XmlNode)
+    '        myNode = Nothing
+    '        myNode = xmln
+    '    End Sub
+
+    '    Sub UnsetNode()
+    '        myNode = Nothing
+    '    End Sub
+
+    '    Public ReadOnly Property minimum As Integer
+    '        Get
+    '            If myNode.Attributes("minimum") Is Nothing Then Return 0
+    '            Dim dbl As Integer = 0
+    '            Integer.TryParse(myNode.Attributes("minimum").Value, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property maximum As Integer
+    '        Get
+    '            If myNode.Attributes("maximum") Is Nothing Then Return 0
+    '            Dim dbl As Integer = 0
+    '            Integer.TryParse(myNode.Attributes("maximum").Value, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property value As Integer
+    '        Get
+    '            Dim dbl As Double = 0
+    '            Integer.TryParse(myNode.InnerText, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property hasMinimum As Boolean
+    '        Get
+    '            If myNode.Attributes("minimum") Is Nothing Then Return False
+    '            Return True
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property hasMaximum As Boolean
+    '        Get
+    '            If myNode.Attributes("maximum") Is Nothing Then Return False
+    '            Return True
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property hasValue As Boolean
+    '        Get
+    '            Return Integer.TryParse(myNode.InnerText, Nothing)
+    '        End Get
+    '    End Property
+
+
+    'End Structure
+
+    'Public Structure FloatParser
+
+    '    Private myNode As XmlNode
+
+    '    Sub New(xmln As XmlNode)
+    '        myNode = xmln
+    '    End Sub
+
+    '    Sub SetNode(xmln As XmlNode)
+    '        myNode = Nothing
+    '        myNode = xmln
+    '    End Sub
+
+    '    Sub UnsetNode()
+    '        myNode = Nothing
+    '    End Sub
+
+    '    Public ReadOnly Property precision As String
+    '        Get
+    '            If myNode.Attributes("precision") Is Nothing Then Return String.Empty
+    '            Return myNode.Attributes("precision").Value
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property minimum As Double
+    '        Get
+    '            If myNode.Attributes("minimum") Is Nothing Then Return Double.NaN
+    '            Dim dbl As Double = 0
+    '            Double.TryParse(myNode.Attributes("minimum").Value, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property maximum As Double
+    '        Get
+    '            If myNode.Attributes("maximum") Is Nothing Then Return Double.NaN
+    '            Dim dbl As Double = 0
+    '            Double.TryParse(myNode.Attributes("maximum").Value, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property value As Double
+    '        Get
+    '            Dim dbl As Double = 0
+    '            Double.TryParse(myNode.InnerText, dbl)
+    '            Return dbl
+    '        End Get
+    '    End Property
+
+
+    '    Public ReadOnly Property hasMinimum As Boolean
+    '        Get
+    '            If myNode.Attributes("minimum") Is Nothing Then Return False
+    '            Return True
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property hasMaximum As Boolean
+    '        Get
+    '            If myNode.Attributes("maximum") Is Nothing Then Return False
+    '            Return True
+    '        End Get
+    '    End Property
+
+
+    '    Public ReadOnly Property hasPrecision As Boolean
+    '        Get
+    '            If myNode.Attributes("precision") Is Nothing Then Return False
+    '            Return True
+    '        End Get
+    '    End Property
+
+    '    Public ReadOnly Property hasValue As Boolean
+    '        Get
+    '            Return Double.TryParse(myNode.InnerText, Nothing)
+    '        End Get
+    '    End Property
+
+    'End Structure
